@@ -1,32 +1,53 @@
 import axios from "axios";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
-const AddDepartment = () => {
-  const navigate = useNavigate();
+const EditDepartment = () =>{
+    const {id}= useParams();
+    const [department, setdepartment]= useState([]);
+    const [loading, setloading]= useState(true);
+    const navigate = useNavigate();
+      useEffect(()=>{
+const fetchdepart = async () => {
+  setloading(true);
+    try{
+      console.log(id);
+      
+const response = await axios.get(`http://localhost:3000/department/${id}`,{
+    headers:{
+    "Authorization": `Bearer ${localStorage.getItem('token')}`
+}
+    })
+     if(response.data.success)
+    {
+        setdepartment(response.data.department);
+    }  
+}
+catch(e)
+    {
+if(e.response && !e.response.data.success)
+{
+    alert(e.response.data.error);
+}
+    }
+    finally{
+      setloading(false)  
+    }
+}
+fetchdepart();
+    },[])
 
-  const [dept, setDept] = useState({
-    dept_name: "",
-    description: ""
-  });
-
-
-  const handleChange = (e) => {
+      const handleChange = (e) => {
     const { name, value } = e.target;
-    setDept(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
-
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    try {
+    setdepartment({...department, [name]: value});
+      }
+const handleSubmit =async (e)=>{
+  console.log("submit clicked");
+  e.preventDefault();
+   try {
       const token = localStorage.getItem("token");
     
-      const response = await axios.post("http://localhost:3000/department/add", dept, {
+      const response = await axios.put(`http://localhost:3000/department/${id}`, department, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -41,10 +62,12 @@ const AddDepartment = () => {
       console.error("Submission error:", error.response?.data || error.message);
       alert(error.response?.data?.error || "Error adding department");
     }
-  };
-
-  return (
-    <div className="max-w-3xl mx-auto mt-10 bg-white p-8 rounded-md shadow-md w-96">
+}
+    return(
+        <>{loading ?
+         <div>loading</div> : 
+         <div>
+           <div className="max-w-3xl mx-auto mt-10 bg-white p-8 rounded-md shadow-md w-96">
       <h2 className="text-2xl font-bold mb-6">Add Department</h2>
       <form onSubmit={handleSubmit}>
         <div>
@@ -53,12 +76,12 @@ const AddDepartment = () => {
             type="text"
             name="dept_name"
             id="dept_name"
-            value={dept.dept_name}
+            value={department.dept_name}
             onChange={handleChange}
             placeholder="Enter the Department Name"
             required
             className="mt-1 w-full p-2 border border-gray-400 rounded-md"
-          />
+            />
         </div>
 
         <div className="mt-4">
@@ -66,7 +89,7 @@ const AddDepartment = () => {
           <textarea
             name="description"
             id="description"
-            value={dept.description}
+            value={department.description}
             onChange={handleChange}
             rows="4"
             placeholder="Enter the description about the department"
@@ -78,12 +101,17 @@ const AddDepartment = () => {
         <button
           type="submit"
           className="w-full mt-6 bg-teal-600 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded"
-        >
-          Add Department
+          >
+          Edit Department
         </button>
       </form>
     </div>
-  );
-};
+        </div>
+    // <div>
+    //  <p> user id : ${id}</p>
+    //   </div>
+}</>
+    );
+}
 
-export default AddDepartment;
+export default EditDepartment;

@@ -2,7 +2,7 @@ import cors from "cors";
 import express from "express";
 import Connectdb from "./db/db.js";
 import authRouter from "./routes/auth.js";
-import departmentrouter from "./routes/auth.js";
+import departmentrouter from "./routes/department.js";
 import userRegister from "./userseed.js";
 const app = express();
 Connectdb();
