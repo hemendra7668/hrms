@@ -35,30 +35,54 @@ export const columns = [
   },
 ];
 
- 
+
+
 export const fetchdepart = async () => {
-  let departments;
-    try{
+ let departments;
+   try{
 const response = await axios.get('http://localhost:3000/department',{
-    headers:{
-    "Authorization": `Bearer ${localStorage.getItem('token')}`
+   headers:{
+   "Authorization": `Bearer ${localStorage.getItem('token')}`
 }
-    })
-     if(response.data.success)
-    {
-  departments= response.data.departments
-    }  
+   })
+    if(response.data.success)
+   {
+ departments= response.data.departments
+   }  
 }
 catch(e)
-    {
+   {
 if(e.response && ! e.response.data.success)
 {
-    alert(e.response.data.error);
+   alert(e.response.data.error);
 }
-    }
- return departments
+   }
+return departments
 }
 
+
+export const fetchemployees = async (id) => {
+ let employees;
+   try{
+const response = await axios.get(`http://localhost:3000/employee/department/${id}`,{
+   headers:{
+   "Authorization": `Bearer ${localStorage.getItem('token')}`
+}
+   })
+    if(response.data.success)
+   {
+ employees= response.data.employees
+   }  
+}
+catch(e)
+   {
+if(e.response && ! e.response.data.success)
+{
+   alert(e.response.data.error);
+}
+   }
+return employees
+}
 
 export const EmployeeButton = ({_id})=>{
   const navigate =useNavigate();
@@ -98,13 +122,12 @@ export const EmployeeButton = ({_id})=>{
     <div className="flex space-x-3">
       <button className="px-3 py-1 bg-teal-600 text-white" onClick={()=>
         navigate(`/Admin-dashboard/employees/${_id}`)}>View</button>
-      <button className="px-3 py-1 bg-orange-400 text-white" onClick={()=>
-        navigate(`/Admin-dashboard/department/${_id}`)}>Edit</button>
+      <button className="px-3 py-1 bg-orange-400 text-white" 
+      onClick={()=> navigate(`/Admin-dashboard/employees/edit/${_id}`)}>Edit</button>
       <button className="px-3 py-1 bg-green-600 text-white" onClick={()=>
         navigate(`/Admin-dashboard/department/${_id}`)}>Salary</button>
       <button className="px-3 py-1 bg-red-500 text-white"
-      onClick={()=>{}}
-      >Leave</button>
+      onClick={()=>{}} >Leave</button>
       
     </div>
   )

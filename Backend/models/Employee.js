@@ -5,7 +5,7 @@ const employeeSchema = new Schema({
     employeeId :{type: String, require: true, unique :true},
     dob: {type: Date},
     gender: {type:String},
-    martialStatus: {type:String},
+    maritalStatus: {type:String},
     designation: {type:String},
     department: {type:Schema.Types.ObjectId, ref:"Department", require:true},
     salary: {type:Number, require:true},

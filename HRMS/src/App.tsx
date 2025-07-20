@@ -14,6 +14,8 @@ import List from "./components/Employee/List";
 
 import Add from "./components/Employee/add";
 import View from "./components/Employee/View";
+import EditEmployee from "./components/Employee/Edit";
+import AddSalary from "./components/salary/Addsalary";
 
 // import { Navigate } from 'react-router-dom';
 function App() {
@@ -37,6 +39,8 @@ function App() {
 <Route path="/Admin-dashboard/employees" element={<List/>}></Route>
 <Route path="/Admin-dashboard/add-employee" element={<Add/>}></Route>
 <Route path="/Admin-dashboard/employees/:id" element={<View/>}></Route>
+<Route path="/Admin-dashboard/employees/edit/:id" element={<EditEmployee/>}></Route>
+<Route path="/Admin-dashboard/add-salary/:id" element={<AddSalary/>}></Route>
 
             </Route>
           <Route path="/Employee-dashboard" element={<EmployeeDash />} />

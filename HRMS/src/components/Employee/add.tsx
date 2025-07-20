@@ -81,7 +81,7 @@ navigate('/Admin-dashboard/employees')
           </div>
           <div style={{ flex: 1 }}>
             <label className="block text-sm font-medium text-gray-700">Date of Birth</label>
-            <input className="mt-1 p-2 block w-full border border-gray-300 rounded-md" name="dateOfBirth"  type="date"  onChange={handleChange} required />
+            <input className="mt-1 p-2 block w-full border border-gray-300 rounded-md" name="dob"  type="date"  onChange={handleChange} required />
           </div>
        
 
