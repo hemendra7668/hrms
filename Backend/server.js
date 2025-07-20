@@ -3,7 +3,7 @@ import express from "express";
 import Connectdb from "./db/db.js";
 import authRouter from "./routes/auth.js";
 import departmentrouter from "./routes/department.js";
-import userRegister from "./userseed.js";
+import employeeRouter from "./routes/employee.js" 
 const app = express();
 Connectdb();
 // app.use(cors());
@@ -21,8 +21,10 @@ app.get("/", (req, res) => {
   res.send("Hello, world!");
 });
 
+app.use(express.static('public/uploads'))
 app.use("/auth", authRouter);
 app.use("/department", departmentrouter);
+app.use("/employee", employeeRouter);
 // app.post("/register", userRegister);
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);

@@ -5,7 +5,7 @@ const PrivateRoute =({children})=>{
     const {user, loading}= useAuth();
 if(loading)
 {
-    <div>loading ... ... ...</div>
+    return <div>loading ... ... ...</div>
 }
 
 return user?children: <Navigate to ="/login"/>;

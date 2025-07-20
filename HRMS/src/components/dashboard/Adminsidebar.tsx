@@ -9,32 +9,32 @@ const AdminSidebar= ()=>{
             </div>
             <div>
                 <NavLink to ='/Admin-dashboard'
-   className= {({isactive})=>`${isactive ? "bg-teal-300" : ""} flex items-center space-x-4 block py-2 px-4 rounded`} end>  
+   className= {({isActive})=>`${isActive ? "bg-teal-300" : " "} flex items-center space-x-4 block py-2 px-4 rounded`} end>  
                      <FaTachometerAlt/>
                     <span>DashBoard</span>
                 </NavLink>
-                <NavLink to ='/Admin-dashboard/departments'
-   className= {({isactive})=>`${isactive ? "bg-teal-300" : ""} flex items-center space-x-4 block py-2 px-4 rounded`} end>  
+                <NavLink to ='/Admin-dashboard/employees'
+   className= {({isActive})=>`${isActive ? "bg-teal-300" : " "} flex items-center space-x-4 block py-2 px-4 rounded`} end>  
                    <FaUser/>
                     <span>Employees</span>
                 </NavLink>
                 <NavLink to ='/Admin-dashboard/departments'
-   className= {({isactive})=>`${isactive ? "bg-teal-300" : " "} flex items-center space-x-4 block py-2 px-4 rounded`}end>                 
+   className= {({isActive})=>`${isActive ? "bg-teal-300" : " "} flex items-center space-x-4 block py-2 px-4 rounded`}end>                 
        <FaBuilding/>
                     <span>Departments</span>
                 </NavLink>
                 <NavLink to ='/Admin-dashboard/departments' 
-  className= {({isactive})=>`${isactive ? "bg-teal-300" : ""} flex items-center space-x-4 block py-2 px-4 rounded`} end>  
+  className= {({isActive})=>`${isActive ? "bg-teal-300" : " "} flex items-center space-x-4 block py-2 px-4 rounded`} end>  
                      <FaCalendarAlt/>
                     <span>leaves</span>
                 </NavLink>
                 <NavLink to ='/Admin-dashboard/departments' 
-               className= {({isactive})=>`${isactive ? "bg-teal-300" : ""} flex items-center space-x-4 block py-2 px-4 rounded`} end>  
+               className= {({isActive})=>`${isActive ? "bg-teal-300" : ""} flex items-center space-x-4 block py-2 px-4 rounded`} end>  
                     <FaMoneyBillWave/>
                     <span>Salary</span>
                 </NavLink>
                 <NavLink to ='/Admin-dashboard/departments'
-  className= {({isactive})=>`${isactive ? "bg-teal-300" : ""} flex items-center space-x-4 block py-2 px-4 rounded`} end>  
+  className= {({isActive})=>`${isActive ? "bg-teal-300" : ""} flex items-center space-x-4 block py-2 px-4 rounded`} end>  
                     <FaCogs/>
                     <span>Settings</span>
                 </NavLink>

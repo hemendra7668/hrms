@@ -10,6 +10,11 @@ import AdminSummary from "./components/dashboard/adminSummary";
 import DepartmentList from "./components/departments/DepartmentList";
 import AddDepartment from "./components/departments/Adddepartment";
 import EditDepartment from "./components/departments/Editdepartment";
+import List from "./components/Employee/List";
+
+import Add from "./components/Employee/add";
+import View from "./components/Employee/View";
+
 // import { Navigate } from 'react-router-dom';
 function App() {
   return (
@@ -29,7 +34,10 @@ function App() {
 <Route path="/Admin-dashboard/departments" element={<DepartmentList/>}></Route>
 <Route path="/Admin-dashboard/add-department" element={<AddDepartment/>}></Route>
 <Route path="/Admin-dashboard/department/:id" element={<EditDepartment/>}></Route>
-<Route index element={<AdminSummary/>}></Route>
+<Route path="/Admin-dashboard/employees" element={<List/>}></Route>
+<Route path="/Admin-dashboard/add-employee" element={<Add/>}></Route>
+<Route path="/Admin-dashboard/employees/:id" element={<View/>}></Route>
+
             </Route>
           <Route path="/Employee-dashboard" element={<EmployeeDash />} />
         </Routes>
