@@ -44,7 +44,7 @@ const Login = () => {
   return (
     <>
       <div>
-        <div
+        <div className="bg bg-green-200"
           style={{
             maxWidth: 500,
             height: 500,
@@ -52,16 +52,16 @@ const Login = () => {
             padding: 24,
             border: "1px solid #eee",
             borderRadius: 8,
-            background: "#54DE6EFF",
+          
           }}
         >
-          <h2>HR Management System</h2>
-          <h2>Login</h2>
+          <h2 className="text-center font-bold py-10">HR Management System</h2>
+          <h2 className="text-center" >Login</h2>
 
           <form onSubmit={handleSubmit}>
             <label htmlFor="email">Email</label>
             <br />
-            <input
+            <input className="border"
               id="email"
               type="email"
               value={email}
@@ -73,7 +73,7 @@ const Login = () => {
             <label htmlFor="password">Password</label>
             <br />
             {/* <br /> */}
-            <input
+            <input className="border"
               id="password"
               type="password"
               value={password}
@@ -87,7 +87,7 @@ const Login = () => {
             )}
 
             <button
-              type="submit"
+              type="submit" className=" border bg-green-400"
               style={{ width: "100%", padding: 10, margin: "10px" }}
             >
               Login

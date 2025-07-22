@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { fetchdepart, fetchemployees } from "../../utils/EmployeeHelper";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const AddSalary = () => {
-  const { id } = useParams();
-  const [employee, setEmployee] = useState({
-    name: '',
-    maritalStatus: '',
-    designation: '',
-    salary: 0,
-    department: '',
-    gender: '',
+  // const { id } = useParams();
+  const [salary, setsalary] = useState({
+    employeeId: null,
+    basicSalary: 0,
+    allowances: 0,
+    deductions: 0,
+    payDate: null,
   });
   const [departments, setDepartments] = useState([]);
   const [employees, setemployees] = useState([]);
@@ -25,37 +24,37 @@ const AddSalary = () => {
     getDepartments();
   }, []);
 
-  useEffect(() => {
-    const fetchEmployee = async () => {
-      try {
-        const response = await axios.get(`http://localhost:3000/employee/${id}`, {
-          headers: {
-            "Authorization": `Bearer ${localStorage.getItem("token")}`
-          }
-        });
+  // useEffect(() => {
+  //   const fetchEmployee = async () => {
+  //     try {
+  //       const response = await axios.get(`http://localhost:3000/employee/${id}`, {
+  //         headers: {
+  //           "Authorization": `Bearer ${localStorage.getItem("token")}`
+  //         }
+  //       });
 
-        if (response.data.success) {
-          const emp = response.data.employee;
-          setEmployee({
-            name: emp.userId.name || '',
-            maritalStatus: emp.maritalStatus || '',
-            designation: emp.designation || '',
-            salary: emp.salary || 0,
-            department: emp.department || '',
-            gender: emp.gender || ''
-          });
-        }
-      } catch (error) {
-        console.error("Error fetching employee:", error);
-        alert("Failed to load employee");
-      }
-    };
-    fetchEmployee();
-  }, [id]);
+  //       if (response.data.success) {
+  //         const emp = response.data.employee;
+  //         setEmployee({
+  //           name: emp.userId.name || '',
+  //           maritalStatus: emp.maritalStatus || '',
+  //           designation: emp.designation || '',
+  //           salary: emp.salary || 0,
+  //           department: emp.department || '',
+  //           gender: emp.gender || ''
+  //         });
+  //       }
+  //     } catch (error) {
+  //       console.error("Error fetching employee:", error);
+  //       alert("Failed to load employee");
+  //     }
+  //   };
+  //   fetchEmployee();
+  // }, [id]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setEmployee((prev) => ({
+    setsalary((prev) => ({
       ...prev,
       [name]: value
     }));
@@ -66,9 +65,9 @@ const AddSalary = () => {
     try {
       const token = localStorage.getItem("token");
 
-      const response = await axios.put(`http://localhost:3000/employee/${id}`, employee, {
+      const response = await axios.post(`http://localhost:3000/salary/add`, salary, {
         headers: {
-          "Content-Type": "multipart/form-data",
+        
           Authorization: `Bearer ${token}`,
         },
       });
@@ -87,34 +86,41 @@ setemployees(emps);
 }
   return (
     <>
-      {departments.length && employee ? (
+      {departments ? (
         <div className="max-w-4xl mx-auto mt-10 bg-white p-8 rounded-md shadow-md">
           <h2 className="text-2xl font-bold mb-6">Add Salary</h2>
           <form onSubmit={handleSubmit}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 
-              {/* Name */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700">Name</label>
-                <input
-                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-                  name="name"
-                  onChange={handleChange}
-                  value={employee.name}
-                  required
-                />
-              </div>
-{/* Department */}
-              <div className="col-span-2">
+            
+              <div >
                 <label className="block text-sm font-medium text-gray-700">Department</label>
                 <select
                   className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
                   name="department"
                   onChange={handledepartment}
-                  value={employee.department}
+                 
                   required
                 >
                   <option value="">Select Department</option>
+                  {departments.map((dep) => (
+                    <option key={dep._id} value={dep._id}>
+                      {dep.dept_name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              {/* Employees */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700">Department</label>
+                <select
+                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                  name="employeeId"
+                  onChange={handleChange}
+                  required
+                >
+                  <option value="">Select employee</option>
                   {employees.map((emp) => (
                     <option key={emp._id} value={emp._id}>
                       {emp.employeeId}
@@ -123,45 +129,22 @@ setemployees(emps);
                 </select>
               </div>
 
-              {/* Employees */}
-              <div className="col-span-2">
-                <label className="block text-sm font-medium text-gray-700">Department</label>
-                <select
+               <div>
+                <label className="block text-sm font-medium text-gray-700">Basic Salary</label>
+                <input
                   className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-                  name="department"
+                   placeholder="Basic Salary"type="number"
+                  name="basicSalary"
                   onChange={handleChange}
-                 
+                
                   required
-                >
-                  <option value="">Select employee</option>
-                  {departments.map((dep) => (
-                    <option key={dep._id} value={dep._id}>
-                      {dep.dept_name}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              {/* Gender */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700">Gender</label>
-                <select
-                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-                  name="gender"
-                  onChange={handleChange}
-                  value={employee.gender}
-                  required
-                >
-                  <option value="">Select Gender</option>
-                  <option value="male">Male</option>
-                  <option value="female">Female</option>
-                  <option value="other">Other</option>
-                </select>
+                />
               </div>
 
              
 
               {/* Designation */}
-              <div>
+              {/* <div>
                 <label className="block text-sm font-medium text-gray-700">Designation</label>
                 <input
                   className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
@@ -170,19 +153,41 @@ setemployees(emps);
                   value={employee.designation}
                   required
                 />
-              </div>
+              </div> */}
 
               
 
               {/* Salary */}
               <div>
-                <label className="block text-sm font-medium text-gray-700">Salary</label>
+                <label className="block text-sm font-medium text-gray-700">Allowances</label>
                 <input
-                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-                  name="salary"
+                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md" placeholder="Allowances"
+                  name="allowances"
                   type="number"
                   onChange={handleChange}
-                  value={employee.salary}
+               
+                  required
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700">Deductions</label>
+                <input
+                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md" placeholder="Deductions"
+                  name="deductions"
+                  type="number"
+                  onChange={handleChange}
+                
+                  required
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700">Pay Date</label>
+                <input
+                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md" placeholder="pay date for salary"
+                  name="payDate"
+                  type="date"
+                  onChange={handleChange}
+                
                   required
                 />
               </div>

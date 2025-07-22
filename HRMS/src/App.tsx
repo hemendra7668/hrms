@@ -15,7 +15,9 @@ import List from "./components/Employee/List";
 import Add from "./components/Employee/add";
 import View from "./components/Employee/View";
 import EditEmployee from "./components/Employee/Edit";
-import AddSalary from "./components/salary/Addsalary";
+import AddSalary from "./components/salary/Addsalary.tsx";
+import ViewSalary from "./components/salary/ViewSalary.tsx";
+import RegistrationForm from "./pages/Register.tsx";
 
 // import { Navigate } from 'react-router-dom';
 function App() {
@@ -41,9 +43,12 @@ function App() {
 <Route path="/Admin-dashboard/employees/:id" element={<View/>}></Route>
 <Route path="/Admin-dashboard/employees/edit/:id" element={<EditEmployee/>}></Route>
 <Route path="/Admin-dashboard/add-salary/:id" element={<AddSalary/>}></Route>
+<Route path="/Admin-dashboard/employees/salary/:id" element={<ViewSalary/>}></Route>
+<Route path="/Admin-dashboard/salary/add" element={<AddSalary/>}></Route>
 
             </Route>
           <Route path="/Employee-dashboard" element={<EmployeeDash />} />
+          <Route path="./register" element={<RegistrationForm />} />
         </Routes>
       </BrowserRouter>
     </>

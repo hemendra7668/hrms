@@ -2,7 +2,7 @@
 import AdminSidebar from "../components/dashboard/Adminsidebar";
 import AdminSummary from "../components/dashboard/adminSummary";
 import Navbar from "../components/dashboard/navbar";
-import { useAuth } from "../Context/authcontext";
+import { useAuth } from "../Context/authcontext.tsx";
 
 import { Outlet, useNavigate } from "react-router-dom";
 const AdminDash = () => {
