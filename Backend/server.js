@@ -5,6 +5,7 @@ import authRouter from "./routes/auth.js";
 import departmentrouter from "./routes/department.js";
 import employeeRouter from "./routes/employee.js" 
 import salaryRouter from "./routes/salary.js" 
+import leaveRouter from "./routes/leave.js" 
 
 const app = express();
 Connectdb();
@@ -28,6 +29,7 @@ app.use("/auth", authRouter);
 app.use("/department", departmentrouter);
 app.use("/employee", employeeRouter);
 app.use("/salary", salaryRouter);
+app.use("/leave", leaveRouter);
 // app.post("/register", userRegister);
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);

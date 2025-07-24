@@ -25,6 +25,7 @@ const RegistrationForm = () => {
      try {
           const res = await axios.post('http://localhost:3000/auth/register', formData);
           alert(res.data.message);
+          navigate('/login');
         } catch (err) {
           console.error('Registration error:', err.response?.data || err.message);
           alert('Registration failed');

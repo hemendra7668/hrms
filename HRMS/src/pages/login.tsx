@@ -93,7 +93,7 @@ const Login = () => {
               Login
             </button>
 
-            <Link to={"./Register"}>No Account, Register yourself</Link>
+            <Link to={"/RegistrationForm"}>No Account, Register yourself</Link>
           </form>
         </div>
       </div>

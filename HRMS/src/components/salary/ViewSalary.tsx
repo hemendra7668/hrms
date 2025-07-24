@@ -62,7 +62,7 @@ placeholder="Search By Emp id"
             <th className="px-6 py-3">Emp ID</th>
             <th className="px-6 py-3">Salary</th>
             <th className="px-6 py-3">Allowance</th>
-            <th className="px-6 py-3">Dedductions</th>
+            <th className="px-6 py-3">Deductions</th>
             <th className="px-6 py-3">Total</th>
             <th className="px-6 py-3">payDate</th>
             </tr> 

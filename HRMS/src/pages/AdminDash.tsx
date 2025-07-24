@@ -9,8 +9,8 @@ const AdminDash = () => {
   const {user, loading}= useAuth();
   const navigate = useNavigate();
   
-  console.log("de", user);
-  console.log("de", user.name);
+  // console.log("de", user);
+  // console.log("de", user.name);
   return (
 <div className="flex">
 <AdminSidebar/>
