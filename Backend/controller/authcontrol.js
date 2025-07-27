@@ -1,4 +1,4 @@
-import bcrypt from "bcrypt";
+import bcrypt from 'bcrypt';
 import jwt from "jsonwebtoken";
 import User from '../models/user.js';
 const login = async (req, res) => {
@@ -7,6 +7,8 @@ const login = async (req, res) => {
     
     const { email, password } = req.body;
     const user = await User.findOne({ email });
+    console.log(user);
+    
     if (!user) {
       return res.status(404).json({ success: "false", message: "no user found" });
     }
@@ -14,7 +16,8 @@ const login = async (req, res) => {
     console.log("the user passw-", user.password);
     // console.log(match);
     const match = await bcrypt.compare(password, user.password);
-    
+    // const match = (user.password === password);
+    console.log(match)
     if (!match) {
      return res.status(401).json({ success: "false", message: "wrong password" });
     }

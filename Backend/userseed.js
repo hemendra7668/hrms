@@ -33,14 +33,15 @@ const userRegister = async (req, res) => {
       return res.status(409).json({ success: false, message: "User already exists" });
     }
 
-    const hashedPassword = await bcrypt.hash(password, 10);
+    // const hashedPassword = password.trim();
+    const hashedPassword =await bcrypt.hash(password, 10);
 
     const newUser = new User({
       name: name.trim(),
       email: email.toLowerCase().trim(),
       password: hashedPassword,
       role,
-      // age not in schema, so don't pass it unless you add it
+    
     });
 
     await newUser.save();

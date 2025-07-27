@@ -5,7 +5,7 @@ const router = express.Router();
 // router.get('/', authmiddleware, getEmployees)
 router.post('/add', authmiddleware,  AddSalary)
 
-router.get('/:id', authmiddleware, getSalary)
+router.get('/:id/:role', authmiddleware, getSalary)
 // router.put('/:id', authmiddleware, updateEmployee)
 // router.get('/department/:id', authmiddleware, fetchEmpbyId)
 

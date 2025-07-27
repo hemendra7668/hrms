@@ -1,5 +1,6 @@
 import  { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 const RegistrationForm = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -9,8 +10,8 @@ const RegistrationForm = () => {
     password: '',
   });
 
-  const roles = ['admin', 'user', 'guest'];
-
+  const roles = ['admin', 'employee', 'guest'];
+const navigate = useNavigate();
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({

@@ -20,6 +20,10 @@ import RegistrationForm from "./pages/Register.tsx";
 import SummaryCard from "./components/EmployeeDashboard/Summary.tsx";
 import LeaveList from "./components/leave/list.tsx";
 import AddLeave from "./components/leave/AddLeave.tsx";
+import EmployeeSetting from "./components/EmployeeDashboard/employeeSetting.tsx";
+import AdminLeaveTable from "./components/dashboard/AdminleaveTable.tsx";
+import LeaveDetail from "./components/leave/LeaveDetail.tsx";
+import Setting from "./components/dashboard/Settings.tsx";
 
 // import { Navigate } from 'react-router-dom';
 function App() {
@@ -74,8 +78,24 @@ function App() {
               element={<ViewSalary />}
             ></Route>
             <Route
+              path="/Admin-dashboard/employees/leaves/:id"
+              element={<LeaveList/>}
+            ></Route>
+            <Route
+              path="/Admin-dashboard/leaves"
+              element={< AdminLeaveTable/>}
+            ></Route>
+            <Route
+              path="/Admin-dashboard/leaves/:id"
+              element={< LeaveDetail/>}
+            ></Route>
+            <Route
               path="/Admin-dashboard/salary/add"
               element={<AddSalary />}
+            ></Route>
+            <Route
+              path="/Admin-dashboard/settings"
+              element={<Setting />}
             ></Route>
           </Route>
           <Route path="/Employee-dashboard" element=
@@ -90,9 +110,10 @@ function App() {
           } >
   <Route index element={<SummaryCard />}></Route>
  <Route path="/Employee-dashboard/profile/:id"      element={<View />} ></Route>
- <Route path="/Employee-dashboard/leaves"      element={<LeaveList/>} ></Route>
+ <Route path="/Employee-dashboard/leaves/:id"      element={<LeaveList/>} ></Route>
  <Route path="/Employee-dashboard/add-leave"      element={<AddLeave/>} ></Route>
  <Route path="/Employee-dashboard/salary/:id"      element={<ViewSalary/>} ></Route>
+ <Route path="/Employee-dashboard/settings"      element={<EmployeeSetting/>} ></Route>
             
           </Route>
           <Route path="/RegistrationForm" element={<RegistrationForm />} />

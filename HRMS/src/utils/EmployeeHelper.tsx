@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../Context/authcontext";
 
 export const columns = [
   {
@@ -86,7 +87,7 @@ return employees
 
 export const EmployeeButton = ({_id})=>{
   const navigate =useNavigate();
-  
+
   // const handledelete=async(id)=>{
   //   const cofirm=window.confirm("do u want to delete")
   //   if(confirm)
@@ -127,7 +128,7 @@ export const EmployeeButton = ({_id})=>{
       <button className="px-3 py-1 bg-green-600 text-white" onClick={()=>
         navigate(`/Admin-dashboard/employees/salary/${_id}`)}>Salary</button>
       <button className="px-3 py-1 bg-red-500 text-white"
-      onClick={()=>{}} >Leave</button>
+      onClick={()=>navigate(`/Admin-dashboard/employees/leaves/${_id}`)} >Leave</button>
       
     </div>
   )

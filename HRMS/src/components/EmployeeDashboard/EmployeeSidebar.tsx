@@ -20,7 +20,7 @@ const {user}= useAuth();
                    <FaUser/>
                     <span>My profile</span>
                 </NavLink>
-                <NavLink to ='/Employee-dashboard/leaves'
+                <NavLink to ={`/Employee-dashboard/leaves/${user._id}`}
    className= {({isActive})=>`${isActive ? "bg-teal-300" : " "} flex items-center space-x-4 block py-2 px-4 rounded`}end>                 
        <FaBuilding/>
                     <span>Leaves</span>

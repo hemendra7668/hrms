@@ -1,12 +1,12 @@
 import express from 'express';
-import { addLeave, getleaves } from '../controller/leaveController.js';
+import { addLeave, getleave , getAllLeaves, getLeaveDetail, updateLeave} from '../controller/leaveController.js';
 import authmiddleware from '../middleware/authmiddleware.js';
 
 const router = express.Router();
 router.post('/add', authmiddleware, addLeave)
-// router.get('/', authmiddleware, getDepartments)
-router.get('/:id', authmiddleware, getleaves)
-// router.put('/:id', authmiddleware, updateDepartment)
-// router.delete('/:id', authmiddleware, deleteDepartment)
+router.get('/detail/:id', authmiddleware, getLeaveDetail)
+router.get('/', authmiddleware, getAllLeaves)
+router.get('/:id/:role', authmiddleware, getleave)
+router.put('/:id', authmiddleware, updateLeave)
 
 export default router; 

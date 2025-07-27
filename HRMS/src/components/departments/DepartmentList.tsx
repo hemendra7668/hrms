@@ -53,7 +53,7 @@ fetchdepart();
   const searchTerm = e.target.value.toLowerCase();
 
   const records = departments.filter((dep) =>
-    dep.dept_name?.toLowerCase().includes(searchTerm)
+    dep.dept_name.toLowerCase().includes(searchTerm)
   );
 
   setfilteredDepartment(records);

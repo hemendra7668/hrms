@@ -30,7 +30,7 @@ userId:user._id,
         console.log("the response here is now here",response.data)
         if(response.data.success)
             {
-               navigate("/Employee-dashboard/leaves")
+               navigate(`/Employee-dashboard/leaves/${user._id}`)
             }  
         }
         catch(e)

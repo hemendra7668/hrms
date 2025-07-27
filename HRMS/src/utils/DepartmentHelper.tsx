@@ -18,6 +18,7 @@ export const columns = [
 
 export const DepartmentButton = ({_id, onDepartmentDelete})=>{
   const navigate =useNavigate();
+  
   const handledelete=async(id)=>{
     const cofirm=window.confirm("do u want to delete")
     if(confirm)
@@ -50,9 +51,9 @@ export const DepartmentButton = ({_id, onDepartmentDelete})=>{
 
   return (
     <div className="flex space-x-3">
-      <button className="px-3 py-1 bg-teal-600 text-white" onClick={()=>
+      <button className=" rounded px-3 py-1 bg-teal-600 text-white cursor-pointer" onClick={()=>
         navigate(`/Admin-dashboard/department/${_id}`)}>Edit</button>
-      <button className="px-3 py-1 bg-red-500 text-white"
+      <button className=" rounded px-3 py-1 bg-red-500 text-white cursor-pointer"
       onClick={()=>handledelete(_id)}
       >Delete</button>
       
