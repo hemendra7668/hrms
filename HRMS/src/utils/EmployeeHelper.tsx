@@ -121,13 +121,13 @@ export const EmployeeButton = ({_id})=>{
  
   return (
     <div className="flex space-x-3">
-      <button className="px-3 py-1 bg-teal-600 text-white" onClick={()=>
+      <button className="px-3 py-1 bg-teal-600 text-white rounded" onClick={()=>
         navigate(`/Admin-dashboard/employees/${_id}`)}>View</button>
-      <button className="px-3 py-1 bg-orange-400 text-white" 
+      <button className="px-3 py-1 bg-orange-400 text-white rounded" 
       onClick={()=> navigate(`/Admin-dashboard/employees/edit/${_id}`)}>Edit</button>
-      <button className="px-3 py-1 bg-green-600 text-white" onClick={()=>
+      <button className="px-3 py-1 bg-green-600 text-white rounded" onClick={()=>
         navigate(`/Admin-dashboard/employees/salary/${_id}`)}>Salary</button>
-      <button className="px-3 py-1 bg-red-500 text-white"
+      <button className="px-3 py-1 bg-red-500 text-white rounded"
       onClick={()=>navigate(`/Admin-dashboard/employees/leaves/${_id}`)} >Leave</button>
       
     </div>
