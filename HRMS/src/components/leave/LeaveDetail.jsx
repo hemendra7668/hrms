@@ -11,7 +11,7 @@ const LeaveDetail =()=>{
     useEffect(()=>{
         const fetchleave = async () => {
 
-  try{
+     try{
       console.log(id);
       
       const response = await axios.get(`http://localhost:3000/leave/detail/${id}`,{
@@ -25,7 +25,7 @@ const LeaveDetail =()=>{
                 setleaves(response.data.leave);
             }  
         }
-        catch(e)
+          catch( e)
         {
             if(e.response && !e.response.data.success)
                 {
@@ -34,7 +34,7 @@ const LeaveDetail =()=>{
             }
           
         }
-        fetchleave();
+        fetchleave()
     },[])
     
 
