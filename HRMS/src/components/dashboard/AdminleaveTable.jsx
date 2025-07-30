@@ -9,7 +9,7 @@ const AdminLeaveTable = () => {
  
   const fetchLeaves = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/leave", {
+      const response = await axios.get("https://hrms-backend-6624.onrender.com/leave", {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },

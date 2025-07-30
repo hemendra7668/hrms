@@ -1,5 +1,5 @@
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 export const columns = [
   {
     name: "s.no",
@@ -27,7 +27,7 @@ export const DepartmentButton = ({_id, onDepartmentDelete})=>{
       try{
         console.log(id);
         
-        const response = await axios.delete(`http://localhost:3000/department/${id}`,{
+        const response = await axios.delete(`https://hrms-backend-6624.onrender.com/department/${id}`,{
           headers:{
             "Authorization": `Bearer ${localStorage.getItem('token')}`
           }

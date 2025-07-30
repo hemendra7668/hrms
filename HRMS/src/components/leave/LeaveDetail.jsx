@@ -14,7 +14,7 @@ const LeaveDetail =()=>{
      try{
       console.log(id);
       
-      const response = await axios.get(`http://localhost:3000/leave/detail/${id}`,{
+      const response = await axios.get(`https://hrms-backend-6624.onrender.com/leave/detail/${id}`,{
           headers:{
               "Authorization": `Bearer ${localStorage.getItem('token')}`
             }
@@ -43,7 +43,7 @@ const LeaveDetail =()=>{
       try{
       console.log(id);
       
-      const responnse = await axios.put(`http://localhost:3000/leave/${id}`, 
+      const responnse = await axios.put(`https://hrms-backend-6624.onrender.com/leave/${id}`, 
          {status},
         {
           headers:{
@@ -72,7 +72,7 @@ const LeaveDetail =()=>{
             <h2 className="text-2xl font-bold mb-8 text-center">Leave Details</h2>
             <div className="grid grid-cols-1 md: grid-cols-2 gap-6">  
        <div>
-<img  src={`http://localhost:3000/${leaves.employeeId.userId.profileImage}`}  className="rounded-full border w-72"/>
+<img  src={`https://hrms-backend-6624.onrender.com/${leaves.employeeId.userId.profileImage}`}  className="rounded-full border w-72"/>
        </div>
        <div>
 <div className="flex space-x-3 mb-2">

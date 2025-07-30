@@ -1,6 +1,5 @@
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../Context/authcontext";
 
 export const columns = [
   {
@@ -41,7 +40,7 @@ export const columns = [
 export const fetchdepart = async () => {
  let departments;
    try{
-const response = await axios.get('http://localhost:3000/department',{
+const response = await axios.get('https://hrms-backend-6624.onrender.com/department',{
    headers:{
    "Authorization": `Bearer ${localStorage.getItem('token')}`
 }
@@ -65,7 +64,7 @@ return departments
 export const fetchemployees = async (id) => {
  let employees;
    try{
-const response = await axios.get(`http://localhost:3000/employee/department/${id}`,{
+const response = await axios.get(`https://hrms-backend-6624.onrender.com/employee/department/${id}`,{
    headers:{
    "Authorization": `Bearer ${localStorage.getItem('token')}`
 }
@@ -96,7 +95,7 @@ export const EmployeeButton = ({_id})=>{
   //     try{
   //       console.log(id);
         
-  //       const response = await axios.delete(`http://localhost:3000/department/${id}`,{
+  //       const response = await axios.delete(`https://hrms-backend-6624.onrender.com/department/${id}`,{
   //         headers:{
   //           "Authorization": `Bearer ${localStorage.getItem('token')}`
   //         }

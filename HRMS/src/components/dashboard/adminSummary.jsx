@@ -1,15 +1,15 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
 import {
-  FaBuilding,
-  FaCandyCane,
-  FaCheckDouble,
-  FaFileAlt,
-  FaHourglassHalf,
-  FaMoneyCheck,
-  FaUser,
+    FaBuilding,
+    FaCandyCane,
+    FaCheckDouble,
+    FaFileAlt,
+    FaHourglassHalf,
+    FaMoneyCheck,
+    FaUser,
 } from "react-icons/fa";
 import SummaryCard from "./Summarycard";
-import { useEffect, useState } from "react";
-import axios from "axios";
 
 const AdminSummary = () => {
   const [summary, setSummary] = useState(null);
@@ -17,7 +17,7 @@ const AdminSummary = () => {
   useEffect(() => {
     const fetchsummary = async () => {
       try {
-        const summary = await axios.get("http://localhost:3000/dashboard/summary", {
+        const summary = await axios.get("https://hrms-backend-6624.onrender.com/dashboard/summary", {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },

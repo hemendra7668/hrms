@@ -1,7 +1,7 @@
-import { useState } from "react";
-import { useAuth } from "../../Context/authcontext";
 import axios from "axios";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../Context/authcontext";
 
 const AddLeave=()=>{
     const {user} = useAuth();
@@ -22,7 +22,7 @@ userId:user._id,
          try{
     
      
-      const response = await axios.post(`http://localhost:3000/leave/add`,leave,{
+      const response = await axios.post(`https://hrms-backend-6624.onrender.com/leave/add`,leave,{
           headers:{
               "Authorization": `Bearer ${localStorage.getItem('token')}`
             }

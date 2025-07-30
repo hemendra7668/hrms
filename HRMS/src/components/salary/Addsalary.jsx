@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { fetchdepart, fetchemployees } from "../../utils/EmployeeHelper";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { fetchdepart, fetchemployees } from "../../utils/EmployeeHelper";
 
 const AddSalary = () => {
   // const { id } = useParams();
@@ -27,7 +27,7 @@ const AddSalary = () => {
   // useEffect(() => {
   //   const fetchEmployee = async () => {
   //     try {
-  //       const response = await axios.get(`http://localhost:3000/employee/${id}`, {
+  //       const response = await axios.get(`https://hrms-backend-6624.onrender.com/employee/${id}`, {
   //         headers: {
   //           "Authorization": `Bearer ${localStorage.getItem("token")}`
   //         }
@@ -65,7 +65,7 @@ const AddSalary = () => {
     try {
       const token = localStorage.getItem("token");
 
-      const response = await axios.post(`http://localhost:3000/salary/add`, salary, {
+      const response = await axios.post(`https://hrms-backend-6624.onrender.com/salary/add`, salary, {
         headers: {
         
           Authorization: `Bearer ${token}`,

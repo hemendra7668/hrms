@@ -29,7 +29,7 @@ console.log(user);
 
     try {
       const response = await axios.put(
-        "http://localhost:3000/setting/change-password",
+        "https://hrms-backend-6624.onrender.com/setting/change-password",
         setting,
         {
           headers: {

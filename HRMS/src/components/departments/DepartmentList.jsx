@@ -1,8 +1,8 @@
-import { Link } from "react-router-dom";
-import DataTable from 'react-data-table-component';
-import { columns, DepartmentButton } from "../../utils/DepartmentHelper";
-import { useEffect, useState } from "react";
 import axios from "axios";
+import { useEffect, useState } from "react";
+import DataTable from 'react-data-table-component';
+import { Link } from "react-router-dom";
+import { columns, DepartmentButton } from "../../utils/DepartmentHelper";
 const DepartmentList = () =>{
     const [departments, setdepartment]= useState([]);
     const [loading, setloading]= useState(false);
@@ -14,7 +14,7 @@ setdepartment(data);
     useEffect(()=>{
 const fetchdepart = async () => {
     try{
-const response = await axios.get('http://localhost:3000/department',{
+const response = await axios.get('https://hrms-backend-6624.onrender.com/department',{
     headers:{
     "Authorization": `Bearer ${localStorage.getItem('token')}`
 }

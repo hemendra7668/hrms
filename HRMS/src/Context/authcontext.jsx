@@ -18,7 +18,7 @@ const AuthProvider = ({ children }) => {
       }
 
       try {
-        const response = await axios.get("http://localhost:3000/auth/verify", {
+        const response = await axios.get("https://hrms-backend-6624.onrender.com/auth/verify", {
           headers: {
             Authorization: `Bearer ${token}`,
           },

@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
 import axios from "axios";
-import  {fetchdepart} from "../../utils/EmployeeHelper";
-import {  useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { fetchdepart } from "../../utils/EmployeeHelper";
 
 const Add = () => {
 const [department, setdepartment]= useState([]);
@@ -40,7 +40,7 @@ const navigate= useNavigate();
     
       const token = localStorage.getItem("token");
 
-      const response = await axios.post("http://localhost:3000/employee/add", formDataObj, {
+      const response = await axios.post("https://hrms-backend-6624.onrender.com/employee/add", formDataObj, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${token}`,

@@ -14,7 +14,7 @@ import { useAuth } from "../../Context/authcontext";
 
  const fetchleave =async ()=>{
 try {
-    const response = await axios.get(`http://localhost:3000/leave/${id}/${user.role}`,{
+    const response = await axios.get(`https://hrms-backend-6624.onrender.com/leave/${id}/${user.role}`,{
         headers: {
             Authorization:`Bearer ${localStorage.getItem('token')}`
         }

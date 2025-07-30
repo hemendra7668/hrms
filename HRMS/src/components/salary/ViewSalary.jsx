@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
 import axios from "axios";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useAuth } from "../../Context/authcontext";
 const ViewSalary =()=>{
@@ -10,7 +10,7 @@ const ViewSalary =()=>{
 const {user}= useAuth();
  const fetchsalary =async ()=>{
 try {
-    const response = await axios.get(`http://localhost:3000/salary/${id}/${user.role}`,{
+    const response = await axios.get(`https://hrms-backend-6624.onrender.com/salary/${id}/${user.role}`,{
         headers: {
             Authorization:`Bearer ${localStorage.getItem('token')}`
         }

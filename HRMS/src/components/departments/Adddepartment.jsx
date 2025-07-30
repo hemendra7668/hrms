@@ -26,7 +26,7 @@ const AddDepartment = () => {
     try {
       const token = localStorage.getItem("token");
     
-      const response = await axios.post("http://localhost:3000/department/add", dept, {
+      const response = await axios.post("https://hrms-backend-6624.onrender.com/department/add", dept, {
         headers: {
           Authorization: `Bearer ${token}`
         }

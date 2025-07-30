@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { fetchdepart } from "../../utils/EmployeeHelper";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { fetchdepart } from "../../utils/EmployeeHelper";
 
 const EditEmployee = () => {
   const { id } = useParams();
@@ -27,7 +27,7 @@ const EditEmployee = () => {
   useEffect(() => {
     const fetchEmployee = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/employee/${id}`, {
+        const response = await axios.get(`https://hrms-backend-6624.onrender.com/employee/${id}`, {
           headers: {
             "Authorization": `Bearer ${localStorage.getItem("token")}`
           }
@@ -65,7 +65,7 @@ const EditEmployee = () => {
     try {
       const token = localStorage.getItem("token");
 
-      const response = await axios.put(`http://localhost:3000/employee/${id}`, employee, {
+      const response = await axios.put(`https://hrms-backend-6624.onrender.com/employee/${id}`, employee, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${token}`,

@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom";
-import DataTable from "react-data-table-component";
-import { useEffect, useState } from "react";
 import axios from "axios";
+import { useEffect, useState } from "react";
+import DataTable from "react-data-table-component";
+import { Link } from "react-router-dom";
 import { EmployeeButton, columns } from "../../utils/EmployeeHelper";
 
 const List = () => {
@@ -11,7 +11,7 @@ const List = () => {
   useEffect(() => {
     const fetchEmployee = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/employee", {
+        const response = await axios.get("https://hrms-backend-6624.onrender.com/employee", {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
@@ -32,7 +32,7 @@ const List = () => {
               profileImage: (
                 <img
                   className="rounded-full w-10 h-10 object-cover"
-                  src={`http://localhost:3000/${emp.userId.profileImage}`}
+                  src={`https://hrms-backend-6624.onrender.com/${emp.userId.profileImage}`}
                   alt="profile"
                 />
               ),

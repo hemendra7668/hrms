@@ -13,7 +13,7 @@ const fetchdepart = async () => {
     try{
       console.log(id);
       
-const response = await axios.get(`http://localhost:3000/department/${id}`,{
+const response = await axios.get(`https://hrms-backend-6624.onrender.com/department/${id}`,{
     headers:{
     "Authorization": `Bearer ${localStorage.getItem('token')}`
 }
@@ -47,7 +47,7 @@ const handleSubmit =async (e)=>{
    try {
       const token = localStorage.getItem("token");
     
-      const response = await axios.put(`http://localhost:3000/department/${id}`, department, {
+      const response = await axios.put(`https://hrms-backend-6624.onrender.com/department/${id}`, department, {
         headers: {
           Authorization: `Bearer ${token}`
         }

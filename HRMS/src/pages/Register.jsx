@@ -1,5 +1,5 @@
-import  { useState } from 'react';
 import axios from 'axios';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 const RegistrationForm = () => {
   const [formData, setFormData] = useState({
@@ -24,7 +24,7 @@ const navigate = useNavigate();
     e.preventDefault();
     console.log('Form submitted:', formData);
      try {
-          const res = await axios.post('http://localhost:3000/auth/register', formData);
+          const res = await axios.post('https://hrms-backend-6624.onrender.com/auth/register', formData);
           alert(res.data.message);
           navigate('/login');
         } catch (err) {
